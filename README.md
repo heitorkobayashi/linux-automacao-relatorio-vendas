@@ -2,11 +2,11 @@
 
 ## **1. Objetivos**
 
-Este projeto teve como objetivo a criação de dois scripts que automatizassem a geração de relatórios de vendas a partir de um arquivo **[`.csv`](/linux-automacao-relatorio-vendas/projeto/ecommerce/dados_de_vendas.csv)**, com execução durante 4 dias seguidos.
+Este projeto teve como objetivo a criação de dois scripts que automatizassem a geração de relatórios de vendas a partir de um arquivo **[`.csv`](../linux-automacao-relatorio-vendas/projeto/ecommerce/dados_de_vendas.csv)**, com execução durante 4 dias seguidos.
 
-O primeiro script, o qual chamaremos de **[Script 1](/linux-automacao-relatorio-vendas/projeto/ecommerce/processamento_de_vendas.sh)**, realiza a criação de diretórios e subdiretórios, a cópia do arquivo  para arquivos de backup junto com a moção desses arquivos para determinados diretórios, além da extração de dados deste arquivo e a criação de relatórios **[`relatorio.txt`](/linux-automacao-relatorio-vendas/projeto/ecommerce/vendas/backup/)** contendo todas essas informações. Já o segundo script, **[Script 2](/linux-automacao-relatorio-vendas/projeto/ecommerce/consolidador_de_processamento_de_vendas.sh)**, teve como função a junção de todos os relatórios gerados a partir do script anterior e, assim, criar um arquivo chamado **[`relatorio_final.txt`](/linux-automacao-relatorio-vendas/projeto/ecommerce/vendas/backup/relatorio_final.txt)**
+O primeiro script, o qual chamaremos de **[Script 1](../linux-automacao-relatorio-vendas/projeto/ecommerce/processamento_de_vendas.sh)**, realiza a criação de diretórios e subdiretórios, a cópia do arquivo  para arquivos de backup junto com a moção desses arquivos para determinados diretórios, além da extração de dados deste arquivo e a criação de relatórios **[`relatorio.txt`](../linux-automacao-relatorio-vendas/projeto/ecommerce/vendas/backup/)** contendo todas essas informações. Já o segundo script, **[Script 2](../linux-automacao-relatorio-vendas/projeto/ecommerce/consolidador_de_processamento_de_vendas.sh)**, teve como função a junção de todos os relatórios gerados a partir do script anterior e, assim, criar um arquivo chamado **[`relatorio_final.txt`](../linux-automacao-relatorio-vendas/projeto/ecommerce/vendas/backup/relatorio_final.txt)**
 
-O diretório contendo todos os resultados do desafio, você pode encontrar **[aqui neste link](/linux-automacao-relatorio-vendas/projeto)**.
+O diretório contendo todos os resultados do desafio, você pode encontrar **[aqui neste link](../linux-automacao-relatorio-vendas/projeto)**.
 
 ## **2. Preparação**
 
@@ -16,7 +16,7 @@ Antes de iniciar o script em si, foi realizada a preparação da área de trabal
 
 Para criar o diretório `ecommerce`foi utilizado o comando `mkdir ecommerce`. O arquivo `dados_de_vendas.csv` foi inserido manualmente no linux. Com o comando `ls` pode-se listar os diretórios e arquivos existentes, como mostra a imagem abaixo:
 
-![imagem_01](/linux-automacao-relatorio-vendas/evidencias/01_criacao_pasta_ecommerce.png) 
+![imagem_01](../linux-automacao-relatorio-vendas/evidencias/01_criacao_pasta_ecommerce.png) 
 
 
 ## **3. Criação do Script 1**
@@ -31,11 +31,11 @@ O primeiro passo deste script foi a criação dos subdiretórios `vendas` e `bac
 - Sabendo que o script será realizado mais que uma vez, com o `mkdir -p` é possível realizar a criação da pasta vendas e prevenir erros futuros por conta da criação de diretórios já existentes, neste caso os diretórios `vendas` e `backup`. 
 - É importante ressaltar a utilização dos caminhos absolutos no script. Na Seção 7, este tema será aprofundado, pois foi uma das maiores dificuldades encontradas na realização deste código.
 
-![imagem_02](/linux-automacao-relatorio-vendas/evidencias/02_codigo_criacao_subdiretorios.png) 
+![imagem_02](../linux-automacao-relatorio-vendas/evidencias/02_codigo_criacao_subdiretorios.png) 
 
 Abaixo, podemos ver o resultado desta primeira parte do script. Nota-se a utilização do `chmod u+x` para garantir a permissão de execução do arquivo. 
 
-![imagem_03](/linux-automacao-relatorio-vendas/evidencias/03_resultado_codigo_criacao_subdiretorios.png) 
+![imagem_03](../linux-automacao-relatorio-vendas/evidencias/03_resultado_codigo_criacao_subdiretorios.png) 
 
 ### **3.2. Renomeação do arquivo de backup**
 
@@ -121,32 +121,32 @@ Acima, podemos ver o comando completo e ressaltar alguns pontos:
 
 Na imagem abaixo, podemos conferir todo o procedimento realizado: 
 
-![imagem_04](/linux-automacao-relatorio-vendas/evidencias/04_codigo_extracao_dados_criacao_relatorio.png) 
+![imagem_04](../linux-automacao-relatorio-vendas/evidencias/04_codigo_extracao_dados_criacao_relatorio.png) 
 
 Para notificar o usuário de que o relatório foi gerado com sucesso, o comando `echo` foi utilizado, assim como o comando `cat` para facilitar a visualização e ter a certeza de que o relatório estava conforme o solicitado, como mostra o resultado do script na imagem abaixo:
 
-![imagem_05](/linux-automacao-relatorio-vendas/evidencias/05_resultado_extracao_dados_criacao_relatorio.png)
+![imagem_05](../linux-automacao-relatorio-vendas/evidencias/05_resultado_extracao_dados_criacao_relatorio.png)
 
 ### **3.5. Compressão do arquivo em zip e remoção dos arquivos `.csv`**
 
 Com o `zip` instalado no sistema, pode-se realizar a compressão do arquivo de backup e, posteriormente, a remoção dos arquivos `.csv`:
 
-![imagem_06](/linux-automacao-relatorio-vendas/evidencias/06_zip_remocao_backup.png)
+![imagem_06](../linux-automacao-relatorio-vendas/evidencias/06_zip_remocao_backup.png)
 
 
 ### **3.6. Agendamento**
 
 Para que o script fosse automatizado, era necessário a realização do agendamento pelo próprio sistema. Com o comando `crontab -e` pode-se efetuar esta tarefa. Antes de executar o agendamento conforme o horário solicitado no desafio, optei pela realização de um teste para saber se estava no caminho correto.
 
-![imagem_09](/linux-automacao-relatorio-vendas/evidencias/09_agendamento_teste.png)
+![imagem_09](../linux-automacao-relatorio-vendas/evidencias/09_agendamento_teste.png)
 
 Com `crontab -l` podemos listar os agendamentos implementados. Esse teste teve como objetivo executar o Script 1 a cada minuto. Para mostrar os relatórios com nomes diferentes, houve uma mudança no nome dos arquivos, como mostra a imagem a seguir:
 
-![imagem_10](/linux-automacao-relatorio-vendas/evidencias/10_agendamento_teste_modificacao_data.png)
+![imagem_10](../linux-automacao-relatorio-vendas/evidencias/10_agendamento_teste_modificacao_data.png)
 
 Dessa forma, pode-se obter os seguintes resultados:
 
-![imagem_11](/linux-automacao-relatorio-vendas/evidencias/11_agendamento_teste_resultado.png)
+![imagem_11](../linux-automacao-relatorio-vendas/evidencias/11_agendamento_teste_resultado.png)
 
 Com o teste sendo bem sucedido, bastava apenas a criação do Script 2 e o agendamento nos dias solicitados. 
 
@@ -159,9 +159,9 @@ Por se tratar de um script mais simples comparado ao anterior, optei por, logo a
 
 A imagem abaixo mostra a criação do arquivo executável e a utilização do comando `chmod u+x` para garantir a execução do script. 
 
-![imagem_12](/linux-automacao-relatorio-vendas/evidencias/12_script2_criacao.png)
+![imagem_12](../linux-automacao-relatorio-vendas/evidencias/12_script2_criacao.png)
 
-Sobre o código em si do **[Script 2](/linux-automacao-relatorio-vendas/projeto/ecommerce/consolidador_de_processamento_de_vendas.sh)**, podemos destacar: 
+Sobre o código em si do **[Script 2](../linux-automacao-relatorio-vendas/projeto/ecommerce/consolidador_de_processamento_de_vendas.sh)**, podemos destacar: 
 
 ```bash
 #!/bin/bash
@@ -191,14 +191,14 @@ echo "O arquivo $arquivo_final foi gerado!"
 
 Com o script finalizado e com alguns relatórios gerados na pasta backup, era hora de testá-lo:
 
-![imagem_14](/linux-automacao-relatorio-vendas/evidencias/14_script2_teste_exec.png)
+![imagem_14](../linux-automacao-relatorio-vendas/evidencias/14_script2_teste_exec.png)
 
 
 ## **5. Execução do procedimento**
 
 Agora tudo estava pronto para a realização do procedimento. Para remover o agendamento de teste foi utilizado o comando `crontab -r`. 
 
-![imagem15](/linux-automacao-relatorio-vendas/evidencias/15_crontab_agendamento.png)
+![imagem15](../linux-automacao-relatorio-vendas/evidencias/15_crontab_agendamento.png)
 
 - Com o `crontab -e` pode-se agendar a execução do Script 1.
 - A task `27 15 * * 3-6 /home...` quer dizer que o agendamento será realizado de quarta-feira a sábado às 15 horas e 27 minutos. 
@@ -211,34 +211,34 @@ Com a execução do Script 1 agendado, bastava apenas a coleta dos resultados e 
 
 Para o primeiro dia não foi necessária a inserção de dados, então os resultados obtidos foram estes:
 
-![imagem16](/linux-automacao-relatorio-vendas/evidencias/16_agendamento_resultado_dia1.png)
+![imagem16](../linux-automacao-relatorio-vendas/evidencias/16_agendamento_resultado_dia1.png)
 
 ### **6.2. Segundo, terceiro e quarto dias**
 
 Neste segundo dia, foi preciso inserir dados novos. Para garantir a permissão de alteração do arquivo `dados_de_vendas.csv`, o comando `chmod u+w` foi utilizado, conforme mostra a imagem abaixo:
 
-![imagem17](/linux-automacao-relatorio-vendas/evidencias/17_permissao_dados_dia2.png)
+![imagem17](../linux-automacao-relatorio-vendas/evidencias/17_permissao_dados_dia2.png)
 
 Em seguida, a linha com ID "89" foi adicionada ao arquivo, e assim sucessivamente:
 
-![imagem15](/linux-automacao-relatorio-vendas/evidencias/15_crontab_agendamento.png)
+![imagem15](../linux-automacao-relatorio-vendas/evidencias/15_crontab_agendamento.png)
 
-![imagem20](/linux-automacao-relatorio-vendas/evidencias/20_adicional_dados_dia3.png)
+![imagem20](../linux-automacao-relatorio-vendas/evidencias/20_adicional_dados_dia3.png)
 
-![imagem22](/linux-automacao-relatorio-vendas/evidencias/22_adicional_dados_dia4.png)
+![imagem22](../linux-automacao-relatorio-vendas/evidencias/22_adicional_dados_dia4.png)
 
 No final do dia 4, obteve-se o seguinte resultado:
 
-![imagem23](/linux-automacao-relatorio-vendas/evidencias/23_resultado_dia4.png)
+![imagem23](../linux-automacao-relatorio-vendas/evidencias/23_resultado_dia4.png)
 
 
 ### **6.3. Resultado do Script 2**
 
 Por fim, após as execuções do Script 1 e, com todos os relatórios gerados durantes os dias, restava apenas a execução manual do Script 2.
 
-![imagem24](/linux-automacao-relatorio-vendas/evidencias/24_script2_execucao.png)
+![imagem24](../linux-automacao-relatorio-vendas/evidencias/24_script2_execucao.png)
 
-Pela imagem, percebe-se a criação do arquivo [`relatorio_final.txt`](/linux-automacao-relatorio-vendas/projeto/ecommerce/vendas/backup/relatorio_final.txt) exatamente na pasta solicitada. A utilização do comando `cat` foi para evidenciar o conteúdo do arquivo final.
+Pela imagem, percebe-se a criação do arquivo [`relatorio_final.txt`](../linux-automacao-relatorio-vendas/projeto/ecommerce/vendas/backup/relatorio_final.txt) exatamente na pasta solicitada. A utilização do comando `cat` foi para evidenciar o conteúdo do arquivo final.
 
 
 ## **7. Referências**
