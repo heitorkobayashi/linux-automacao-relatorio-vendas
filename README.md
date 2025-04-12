@@ -2,7 +2,7 @@
 
 ## **1. Objetivos**
 
-Este projeto teve como objetivo a criação de dois scripts que automatizassem a geração de relatórios de vendas a partir de um arquivo **[`.csv`](../linux-automacao-relatorio-vendas/projeto/ecommerce/dados_de_vendas.csv)**, com execução durante 4 dias seguidos.
+Este projeto teve como objetivo a criação de dois scripts que automatizassem a geração de relatórios de vendas a partir de um arquivo **[`.csv`](https://github.com/heitorkobayashi/linux-automacao-relatorio-vendas/blob/main/projeto/ecommerce/dados_de_vendas.csv)**, com execução durante 4 dias seguidos.
 
 O primeiro script, o qual chamaremos de **[Script 1](../linux-automacao-relatorio-vendas/projeto/ecommerce/processamento_de_vendas.sh)**, realiza a criação de diretórios e subdiretórios, a cópia do arquivo  para arquivos de backup junto com a moção desses arquivos para determinados diretórios, além da extração de dados deste arquivo e a criação de relatórios **[`relatorio.txt`](../linux-automacao-relatorio-vendas/projeto/ecommerce/vendas/backup/)** contendo todas essas informações. Já o segundo script, **[Script 2](../linux-automacao-relatorio-vendas/projeto/ecommerce/consolidador_de_processamento_de_vendas.sh)**, teve como função a junção de todos os relatórios gerados a partir do script anterior e, assim, criar um arquivo chamado **[`relatorio_final.txt`](../linux-automacao-relatorio-vendas/projeto/ecommerce/vendas/backup/relatorio_final.txt)**
 
